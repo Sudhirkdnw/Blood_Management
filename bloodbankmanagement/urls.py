@@ -37,6 +37,7 @@ urlpatterns = [
     path('update-donor/<int:pk>', views.update_donor_view,name='update-donor'),
     path('delete-donor/<int:pk>', views.delete_donor_view,name='delete-donor'),
     path('admin-request', views.admin_request_view,name='admin-request'),
+    path('admin-bloodtest', views.admin_bloodtest,name='admin-bloodtest'),
     path('update-patient/<int:pk>', views.update_patient_view,name='update-patient'),
     path('delete-patient/<int:pk>', views.delete_patient_view,name='delete-patient'),
     path('admin-donation', views.admin_donation_view,name='admin-donation'),

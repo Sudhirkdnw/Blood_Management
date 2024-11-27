@@ -12,6 +12,8 @@ from donor import models as dmodels
 from patient import models as pmodels
 from donor import forms as dforms
 from patient import forms as pforms
+from patient.models import BloodTest
+
 
 def home_view(request):
     x=models.Stock.objects.all()
@@ -246,3 +248,11 @@ def reject_donation_view(request,pk):
     donation.status='Rejected'
     donation.save()
     return HttpResponseRedirect('/admin-donation')
+
+def admin_bloodtest(request):
+    bloodtest = BloodTest.objects.all()
+    return render(request,'blood/admin_bloodtest.html',{'bloodtest':bloodtest})
+    
+       
+
+    

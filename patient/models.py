@@ -21,3 +21,14 @@ class Patient(models.Model):
         return self
     def __str__(self):
         return self.user.first_name
+    
+    
+class BloodTest(models.Model):
+    full_name = models.CharField(max_length=255)
+    mobile = models.CharField(max_length=15)  # CharField to handle leading zeroes
+    age = models.PositiveIntegerField()
+    blood_group = models.CharField(max_length=5)  # Accommodates values like "A+", "O-", etc.
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.full_name} ({self.blood_group})"

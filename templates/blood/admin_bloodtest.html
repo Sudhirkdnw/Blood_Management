@@ -1,0 +1,47 @@
+{% extends 'blood/adminbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+<br><br>
+<div class="container">
+    <H4 class="text-center">Blood Test Requested</H4><br>
+   <h5 class="text-center" style="color: red;"> {{message}}</h5><br>
+    <table class="table table-light table-hover table-bordered table-striped">
+        <thead class="bg-info">
+            <tr>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Age</th>
+                <th scope="col">Blood Group</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th class="text-right">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for request in bloodtest %}
+            <tr>
+                <td>{{ request.full_name }}</td>
+                <td>{{ request.mobile }}</td>
+                <td>{{ request.age }}</td>
+                <td>{{ request.blood_group }}</td>
+                <td>{{ request.created_at }}</td>
+            
+                
+                
+                <td class="text-right">
+                   
+                    {% comment %} <button class="btn btn-primary badge-pill" style="width: 100px;"><a  style="text-decoration: none;color: white;" href="{% url 'update-approve-status' t.id  %}">Approve</a> </button>
+                    <button class="btn btn-danger badge-pill" style="width: 80px;"><a  style="text-decoration: none;color: white;" href="{% url 'update-reject-status' t.id  %}">Reject</a> </button>
+                     {% endcomment %}
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    
+    </table>
+
+</div>
+
+{% endblock content %}

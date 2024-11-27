@@ -1,0 +1,46 @@
+{% extends 'patient/patientbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+<head>
+        <!-- Font special for pages-->
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+
+        <!-- Main CSS-->
+    
+        <link href="{% static "css/main.css" %}"rel="stylesheet" media="all">
+</head>
+<div class="page-wrapper bg-gra-03 p-t-45 p-b-50">
+    <div class="wrapper wrapper--w790">
+      
+        <div style="margin-left: 70px;" class="card card-5">
+            <div class="card-heading">
+                <h2 class="title">BLOOD TEST</h2>
+            </div>
+            <div class="card-body">
+                <form method="POST" autocomplete="off" enctype="multipart/form-data">
+                    {% csrf_token %}
+
+                    <label for="full-name">Full Name:</label>
+                    <input type="text" id="full-name" name="full-name" placeholder="Enter your full name" required>
+        
+                    <label for="mobile">Mobile Number</label>
+                    <input type="number" id="mobile" name="mobile" placeholder="Enter your phone number" required>
+        
+                    <label for="age">Age:</label>
+                    <input type="number" id="age" name="age" placeholder="Enter your age" required>
+        
+                    <label for="target-sugar-level">Blood Group</label>
+                    <input type="text" id="blood" name="blood" placeholder="A, O, O+" required>
+        
+                    <button type="submit" class="btn btn-primary">REQUEST</button>
+                </form>
+                <br>
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

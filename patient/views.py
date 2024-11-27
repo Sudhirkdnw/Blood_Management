@@ -10,6 +10,8 @@ from django.core.mail import send_mail
 from django.contrib.auth.models import User
 from blood import forms as bforms
 from blood import models as bmodels
+from django.contrib import messages
+from .models import BloodTest
 
 
 def patient_signup_view(request):
@@ -61,3 +63,30 @@ def my_request_view(request):
     patient= models.Patient.objects.get(user_id=request.user.id)
     blood_request=bmodels.BloodRequest.objects.all().filter(request_by_patient=patient)
     return render(request,'patient/my_request.html',{'blood_request':blood_request})
+
+
+def bloodtest(request):
+    if request.method == 'POST':
+        full_name = request.POST.get('full-name')
+        mobile = request.POST.get('mobile')
+        age = request.POST.get('age')
+        blood_group = request.POST.get('blood')
+
+        # Validate fields (optional, as HTML `required` handles it mostly)
+        if not full_name or not mobile or not age or not blood_group:
+            messages.error(request, "All fields are required!")
+            return redirect('blood_test_request')
+
+        # Save to database
+        blood_test_request = BloodTest.objects.create(
+            full_name=full_name,
+            mobile=mobile,
+            age=age,
+            blood_group=blood_group,
+        )
+
+        messages.success(request, "Your blood test request has been submitted successfully!")
+        return redirect('bloodtest')  # Redirect to the same or a success page
+
+    return render(request, 'patient/bloodtest.html')
+
