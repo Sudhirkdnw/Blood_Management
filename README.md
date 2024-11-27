@@ -3,9 +3,9 @@
 ---
 ## Screenshots
 ### Homepage
-![homepage snap](https://github.com/sumitkumar1503/bloodbankmanagement/blob/master/static/screenshot/homepage.png?raw=true)
+![homepage snap](https://github.com/sudhirkdnw/Blood_Management/static/screenshot/homepage.png?raw=true)
 ### Admin Dashboard
-![dashboard snap](https://github.com/sumitkumar1503/bloodbankmanagement/blob/master/static/screenshot/admindashboard.png?raw=true)
+![dashboard snap](https://github.com/sudhirkdnw/Blood_Management/static/screenshot/static/screenshot/admindashboard.png?raw=true)
 ### Blood Donation 
 
 ---
