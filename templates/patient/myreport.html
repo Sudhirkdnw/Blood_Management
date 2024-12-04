@@ -1,23 +1,32 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'patient/patientbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Report</title>
+
+    <style>
+        
+        .report {padding: 13px; }
+    </style>
 </head>
 <body>
+    <div class="report">
     <h1>Welcome, {{ request.user.username }}</h1>
     <h2>Your Report</h2>
     {% if messages %}
         <ul>
             {% for message in messages %}
                 <li>
-                    <strong>{{ message..user.username }}</strong> ({{ message.created_at|date:"d M Y H:i" }})<br>
-                    {{ message.address }}<br>
-                    {{ message.phone_number }}<br>
-                    {{ message.sugar_level }}<br>
-                    {{ message.medicine }}<br>
-                    {{ message.other_details }}<br>
+                   <h2>Name:-  <strong>{{ request.user.username }}</strong> <br></h2>
+                   Address:-  {{ message.address }}<br>
+                   Phone:- {{ message.phone_number }}<br>
+                    Sugar Level :- {{ message.sugar_level }}<br>
+                    Medicine:- {{ message.medicine }}<br>
+                    Other Details:- {{ message.other_details }}<br>
 
                 </li>
             {% endfor %}
@@ -25,6 +34,7 @@
     {% else %}
         <p>No messages available.</p>
     {% endif %}
-</body>
-</html>
+    </div>
+{% endblock content %}
+
 
