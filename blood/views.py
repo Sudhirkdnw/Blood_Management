@@ -13,6 +13,8 @@ from patient import models as pmodels
 from donor import forms as dforms
 from patient import forms as pforms
 from patient.models import BloodTest
+from .models import Report
+from .forms import ReportForm
 
 
 def home_view(request):
@@ -254,5 +256,19 @@ def admin_bloodtest(request):
     return render(request,'blood/admin_bloodtest.html',{'bloodtest':bloodtest})
     
        
+@login_required
+def add_report(request):
+    if request.method == 'POST':
+        form = ReportForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('../')
+    else:
+        form = ReportForm()
+    return render(request, 'blood/add_report.html', {'form': form})
 
+@login_required
+def list_report(request):
+    report = Report.objects.all()
+    return render(request, 'blood/list_report.html', {'report': report})
     

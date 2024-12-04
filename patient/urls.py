@@ -9,5 +9,7 @@ urlpatterns = [
     path('make-request', views.make_request_view,name='make-request'),
     path('my-request', views.my_request_view,name='my-request'),
     path('bloodtest', views.bloodtest,name='bloodtest'),
+    path('myreport', views.myreport, name='myreport'),
+
 
 ]

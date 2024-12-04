@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import User
+
 from patient import models as pmodels
 from donor import models as dmodels
 class Stock(models.Model):
@@ -20,4 +22,13 @@ class BloodRequest(models.Model):
     def __str__(self):
         return self.bloodgroup
 
-        
+class Report(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='patients')
+    address = models.TextField()
+    phone_number = models.CharField(max_length=15)
+    sugar_level = models.DecimalField(max_digits=5, decimal_places=2)
+    medicine = models.TextField()
+    other_details = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.phone_number}"

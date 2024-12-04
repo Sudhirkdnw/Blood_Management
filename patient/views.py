@@ -12,6 +12,8 @@ from blood import forms as bforms
 from blood import models as bmodels
 from django.contrib import messages
 from .models import BloodTest
+from blood.models import Report
+
 
 
 def patient_signup_view(request):
@@ -86,7 +88,13 @@ def bloodtest(request):
         )
 
         messages.success(request, "Your blood test request has been submitted successfully!")
-        return redirect('bloodtest')  # Redirect to the same or a success page
+        return redirect('./')  # Redirect to the same or a success page
 
     return render(request, 'patient/bloodtest.html')
 
+
+@login_required
+def myreport(request):
+    # Fetch messages for the logged-in user
+    messages = Report.objects.filter(user=request.user)
+    return render(request, 'patient/myreport.html', {'messages': messages})

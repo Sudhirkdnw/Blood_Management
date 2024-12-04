@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Report</title>
+</head>
+<body>
+    <h1>Welcome, {{ request.user.username }}</h1>
+    <h2>Your Report</h2>
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>
+                    <strong>{{ message..user.username }}</strong> ({{ message.created_at|date:"d M Y H:i" }})<br>
+                    {{ message.address }}<br>
+                    {{ message.phone_number }}<br>
+                    {{ message.sugar_level }}<br>
+                    {{ message.medicine }}<br>
+                    {{ message.other_details }}<br>
+
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No messages available.</p>
+    {% endif %}
+</body>
+</html>
+

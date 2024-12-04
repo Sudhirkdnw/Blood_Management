@@ -1,0 +1,28 @@
+{% extends 'blood/adminbase.html' %}
+{% block content %}
+{% load widget_tweaks %}
+{%load static%}
+    <h1>Patient Records</h1>
+    <table border="1">
+        <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Sugar Level</th>
+            <th>Medicine</th>
+            <th>Other Details</th>
+        </tr>
+        {% for report in report %}
+        <tr>
+            <td>{{ report.user.username }}</td>
+            <td>{{ report.address }}</td>
+            <td>{{ report.phone_number }}</td>
+            <td>{{ report.sugar_level }}</td>
+            <td>{{ report.medicine }}</td>
+            <td>{{ report.other_details }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    
+    {% endblock content %}
